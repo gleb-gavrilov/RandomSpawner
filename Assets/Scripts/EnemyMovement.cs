@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-
     private int _speed = 4;
-    private Vector3 _center = new Vector3(0, 0, 0);
+    private Vector3 _center = Vector3.zero;
     
     private void Update()
     {

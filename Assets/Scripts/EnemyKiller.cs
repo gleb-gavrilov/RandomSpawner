@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyKiller : MonoBehaviour
 {
-    private const string _enemyTag = "Enemy";
+    private const string EnemyTag = "Enemy";
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag(_enemyTag))
+        if (collision.gameObject.CompareTag(EnemyTag))
         {
             Destroy(collision.gameObject);
         }
