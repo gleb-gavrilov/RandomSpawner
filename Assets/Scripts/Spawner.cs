@@ -6,14 +6,14 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy;
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private float _startTimeBetweenSpawn;
+    [SerializeField] private float _delay;
 
     private int _randomSpawnPosition;
     private float _timeBetweenSpawn;
 
     private void Start()
     {
-        _timeBetweenSpawn = _startTimeBetweenSpawn;
+        _timeBetweenSpawn = _delay;
     }
 
     private void Update()
@@ -22,7 +22,7 @@ public class Spawner : MonoBehaviour
         {
             _randomSpawnPosition = Random.Range(0, _spawnPoints.Length);
             Instantiate(_enemy, _spawnPoints[_randomSpawnPosition].transform.position, Quaternion.identity);
-            _timeBetweenSpawn = _startTimeBetweenSpawn;
+            _timeBetweenSpawn = _delay;
         }
         else
         {
