@@ -9,13 +9,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private float _delay;
 
     private int _randomSpawnPosition;
-    private float _timeBetweenSpawn;
     private Coroutine _generateEnemies;
-
-    private void Start()
-    {
-        _timeBetweenSpawn = _delay;
-    }
 
     private void Update()
     {
