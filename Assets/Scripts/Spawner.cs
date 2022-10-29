@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour
 
     private int _randomSpawnPosition;
     private float _timeBetweenSpawn;
+    private Coroutine _generateEnemies;
 
     private void Start()
     {
@@ -18,15 +19,17 @@ public class Spawner : MonoBehaviour
 
     private void Update()
     {
-        if (_timeBetweenSpawn <= 0)
+        if (_generateEnemies == null)
         {
-            _randomSpawnPosition = Random.Range(0, _spawnPoints.Length);
-            Instantiate(_enemy, _spawnPoints[_randomSpawnPosition].transform.position, Quaternion.identity);
-            _timeBetweenSpawn = _delay;
+            _generateEnemies = StartCoroutine(GenerateEnemies());
         }
-        else
-        {
-            _timeBetweenSpawn -= Time.deltaTime;
-        }
+    }
+
+    private IEnumerator GenerateEnemies()
+    {
+        _randomSpawnPosition = Random.Range(0, _spawnPoints.Length);
+        Instantiate(_enemy, _spawnPoints[_randomSpawnPosition].transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(_delay);
+        _generateEnemies = null;
     }
 }
