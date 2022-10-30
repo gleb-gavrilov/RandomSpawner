@@ -6,7 +6,7 @@ public class EnemyKiller : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Enemy>())
+        if (collision.TryGetComponent<Enemy>(out Enemy enemy))
         {
             Destroy(collision.gameObject);
         }
