@@ -10,6 +10,12 @@ public class Spawner : MonoBehaviour
 
     private int _randomSpawnPosition;
     private Coroutine _generateEnemies;
+    private WaitForSeconds _wait;
+
+    private void Start()
+    {
+        _wait = new WaitForSeconds(_delay);
+    }
 
     private void Update()
     {
@@ -23,7 +29,7 @@ public class Spawner : MonoBehaviour
     {
         _randomSpawnPosition = Random.Range(0, _spawnPoints.Length);
         Instantiate(_enemy, _spawnPoints[_randomSpawnPosition].transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(_delay);
+        yield return _wait;
         _generateEnemies = null;
     }
 }
